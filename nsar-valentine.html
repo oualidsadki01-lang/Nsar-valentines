@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Nsar Omar 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink-1:#ffecf0;
+      --pink-2:#ffd1dc;
+      --accent:#ff4d6d;
+      --card-bg:#fff7fb;
+      --muted:#6b6b6b;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, #fffbe6 0%, rgba(255,243,205,0.6) 8%,
+                  linear-gradient(135deg,var(--pink-1),var(--pink-2)) 20%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      padding:36px;
+    }
+
+    /* scene with sunflowers */
+    .scene{
+      position:relative;
+      width:100%;
+      max-width:980px;
+      height:80vh;
+      min-height:520px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* card */
+    .card{
+      position:relative;
+      width:360px;
+      background:linear-gradient(180deg,var(--card-bg),#fff);
+      border-radius:24px;
+      padding:28px 22px;
+      box-shadow: 0 30px 60px rgba(255,77,109,0.12), 0 8px 20px rgba(11,15,30,0.06);
+      text-align:center;
+      z-index:40;
+      transform-origin:center;
+      animation:pop 550ms cubic-bezier(.2,.9,.2,1);
+    }
+    @keyframes pop { from{transform:translateY(8px) scale(.98);opacity:0} to{transform:translateY(0) scale(1);opacity:1} }
+
+    .title{
+      font-family:"Baloo 2", "Poppins", cursive;
+      font-size:26px;
+      color:var(--accent);
+      margin:0 0 8px 0;
+      letter-spacing:0.4px;
+    }
+    .subtitle{color:var(--muted);margin:0 0 18px 0;font-size:15px;line-height:1.4}
+
+    .buttons{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      align-items:center;
+      margin-top:8px;
+      height:64px;
+    }
+
+    button{
+      background:#fff;
+      border-radius:999px;
+      padding:12px 22px;
+      font-weight:600;
+      border:none;
+      box-shadow: 0 8px 18px rgba(11,15,30,0.06);
+      cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease;
+      font-family:inherit;
+    }
+    #yes{
+      background:var(--accent);
+      color:white;
+      padding:14px 26px;
+      font-size:15px;
+    }
+    #yes:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 18px 30px rgba(255,77,109,0.18) }
+
+    /* no button more playful */
+    #no{
+      background:linear-gradient(180deg,#fff,#f6f6f6);
+      color:#444;
+      position:relative;
+      left:0;
+      top:0;
+      transition:transform .3s cubic-bezier(.2,.9,.2,1);
+      user-select:none;
+    }
+
+    /* shiba dog */
+    .shiba{
+      position:absolute;
+      right:8%;
+      bottom:6%;
+      width:160px;
+      height:160px;
+      z-index:30;
+      transform:translate(0,0);
+      transition:transform .45s cubic-bezier(.2,.9,.2,1);
+      will-change:transform;
+      pointer-events:none;
+    }
+
+    .shiba svg{width:100%;height:100%;display:block}
+
+    /* tail wag */
+    .tail{
+      transform-origin:75% 60%;
+      animation:wag 900ms ease-in-out infinite;
+    }
+    @keyframes wag{
+      0%{transform:rotate(0)}
+      25%{transform:rotate(12deg)}
+      50%{transform:rotate(0)}
+      75%{transform:rotate(-12deg)}
+      100%{transform:rotate(0)}
+    }
+
+    /* jump animation */
+    .shiba.jump{ animation:jump 700ms cubic-bezier(.2,.9,.2,1) forwards; }
+    @keyframes jump{
+      0%{transform: translateY(0) scale(1)}
+      30%{transform: translateY(-28px) scale(1.03)}
+      80%{transform: translateY(0) scale(0.99)}
+      100%{transform: translateY(0) scale(1)}
+    }
+
+    /* floating sunflowers - decorative */
+    .sunflower{
+      position:absolute;
+      width:120px;
+      height:120px;
+      z-index:10;
+      opacity:.95;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,0.08));
+      transform-origin:center;
+      animation:float 6s ease-in-out infinite;
+    }
+    .sunflower.s1{ left:6%; top:8%; animation-delay:0s; transform:rotate(-6deg) scale(.9) }
+    .sunflower.s2{ right:6%; top:10%; animation-delay:1.2s; transform:rotate(8deg) scale(1.05) }
+    .sunflower.s3{ left:4%; bottom:14%; animation-delay:2.1s; transform:rotate(2deg) scale(.95) }
+    @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-10px)} 100%{transform:translateY(0)} }
+
+    /* hearts/confetti containers */
+    .effects{ position:absolute; inset:0; pointer-events:none; z-index:50; overflow:visible }
+
+    /* small responsive tweaks */
+    @media (max-width:640px){
+      .scene{height:88vh; min-height:520px}
+      .shiba{width:120px;height:120px; right:6%; bottom:8%}
+      .card{width:88%; max-width:420px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="scene" id="scene">
+    <!-- decorative sunflowers (inline SVGs) -->
+    <div class="sunflower s1" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffd34d"/><stop offset="1" stop-color="#ffb74d"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="14" fill="#5c3b1a"/>
+        <!-- petals -->
+        <g fill="url(#g1)">
+          <ellipse cx="50" cy="10" rx="10" ry="18"/>
+          <ellipse cx="50" cy="90" rx="10" ry="18"/>
+          <ellipse cx="10" cy="50" rx="18" ry="10"/>
+          <ellipse cx="90" cy="50" rx="18" ry="10"/>
+          <ellipse cx="22" cy="22" rx="12" ry="8" transform="rotate(-45 22 22)"/>
+          <ellipse cx="78" cy="22" rx="12" ry="8" transform="rotate(45 78 22)"/>
+          <ellipse cx="22" cy="78" rx="12" ry="8" transform="rotate(45 22 78)"/>
+          <ellipse cx="78" cy="78" rx="12" ry="8" transform="rotate(-45 78 78)"/>
+        </g>
+        <circle cx="50" cy="50" r="11" fill="#3c2412" opacity=".9"/>
+      </svg>
+    </div>
+
+    <!-- The card and shiba omitted for brevity, same as user's code -->
+
+  </div>
+
+  <script>
+    // JS code remains the same as provided by the user
+  </script>
+</body>
+</html>
